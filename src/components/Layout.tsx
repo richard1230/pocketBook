@@ -9,7 +9,6 @@ display: flex;
 //使得结构变为上下结构
 flex-direction: column;
 //行高
- 
 `;
 
 const Main = styled.div`
@@ -29,5 +28,6 @@ const Layout =(props:any )=>{
   )
 }
 
-
 export default Layout
+
+
