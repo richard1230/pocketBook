@@ -32,9 +32,9 @@ width: 24px;
 height: 24px
       }
  &.selected{
-color:red;
+color:#40B475;
     .icon{
-      fill:red;
+      fill:#40B475;
     }
 }
     }
