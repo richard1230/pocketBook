@@ -12,6 +12,7 @@ import Icon from './Icon';
 //2.svg会不显示
 // console.log(x,y)
 const NavWrapper = styled.nav`
+background:#ffffff;
 //border: 1px solid blue;
 line-height: 24px;
 //设置阴影
