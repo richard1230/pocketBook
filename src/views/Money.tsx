@@ -7,6 +7,11 @@ const TagsSection = styled.section`
     background:#FFFFFF;
     //border: 1px solid red;
     padding: 12px 16px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
 > ol{
   margin: 0 -12px;
   >li{
@@ -137,10 +142,13 @@ box-shadow: inset 0 -5px 5px -5px rgba(0,0,0,0.25),
   }
 }
 `;
-
+const MyLayout = styled(Layout)`
+display: flex;
+flex-direction: column;
+`
 function Money() {
   return (
-    <Layout>
+    <MyLayout>
       <TagsSection>
         <ol>
           <li>衣</li>
@@ -162,7 +170,6 @@ function Money() {
           <input type="text" placeholder="在这里添加属性"/>
         </label>
       </NotesSection>
-
       <CategorySection>
         <ul>
           <li  className="selected">支出</li>
@@ -190,7 +197,7 @@ function Money() {
           <button className="dot">.</button>
         </div>
       </NumberPadSection>
-    </Layout>
+    </MyLayout>
   );
 }
 
