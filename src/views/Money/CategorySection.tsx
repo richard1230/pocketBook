@@ -27,9 +27,9 @@ font-size: 24px;
 
 const CategorySection:React.FC = ()=>{
   const categoryMap = {'-':'支出','+':'收入'}
-  type Y = keyof typeof categoryMap
+  type Keys = keyof typeof categoryMap
   //string[]:字符串数组;()[]:任意类型的数组;('-'|'+')[]:减和加的数组
-  const [categoryList] = useState<('-'|'+')[]>(['-','+'])
+  const [categoryList] = useState<Keys[]>(['-','+'])
   const [category,setCategory] = useState('-') // + 表示收入  -表示支出
 
   return(
