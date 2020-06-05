@@ -68,7 +68,15 @@ box-shadow: inset 0 -5px 5px -5px rgba(0,0,0,0.25),
 `;
 
 const NumberPadSection: React.FC = () => {
-  const [output, setOutput] = useState('0');
+  const [output, _setOutput] = useState('0');
+  const setOutput = (output: string) => {
+    if (output.length > 16) {
+      output = output.slice(0, 16);
+    } else if (output.length === 0) {
+      output = '0';
+    }
+    _setOutput(output);
+  };
   const onClickButtonWrapper = (e: React.MouseEvent) => {
     const text = (e.target as HTMLButtonElement).textContent;
     if (text === null) {
@@ -85,7 +93,6 @@ const NumberPadSection: React.FC = () => {
       case '7':
       case '8':
       case '9':
-      case '.':
         if (output === '0') {
           setOutput(text);
         } else {
@@ -93,13 +100,24 @@ const NumberPadSection: React.FC = () => {
         }
         break;
       case '删除':
-        console.log('删除');
+        if (output.length === 1) {
+          setOutput('');
+        } else {
+          //output.length-1这里可以直接写成 -1
+          setOutput(output.slice(0, output.length - 1));
+        }
         break;
       case '清空':
-        console.log('清空');
+        setOutput('0');
         break;
       case 'ok':
         console.log('ok');
+        break;
+      case '.':
+        if (output.indexOf('.') >= 0) {
+          return;
+        }
+        setOutput(output + '.');
         break;
     }
   };
