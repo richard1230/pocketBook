@@ -35,10 +35,16 @@ const Wrapper = styled.section`
 }
 `;
 
+type Props = {
+  value:string[];
+  onChange: (selected:string[])=>void
+}
 //FunctionComponent就是FC
-const TagsSection: React.FC = () => {
+//我是一个函数组件,除了接受默认的children,还可以接受string[]类型
+const TagsSection: React.FC<Props> = (props) => {
   const [tags, setTags] = useState<string[]>(['衣', '食', '住', '行']);
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  // const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const selectedTags = props.value;
   const onAddTag = () => {
     const tagName = window.prompt('新标签的名称为:');
     if (tagName !== null) {
@@ -50,9 +56,9 @@ const TagsSection: React.FC = () => {
     const index = selectedTags.indexOf(tag);
     if (index >= 0) {
       //如果tag已被选中,就复制所没有选中的tag,作为新的selectedTag
-      setSelectedTags(selectedTags.filter(t => t !== tag));
+      props.onChange(selectedTags.filter(t => t !== tag));
     } else {
-      setSelectedTags([...selectedTags, tag]);
+      props.onChange([...selectedTags, tag]);
     }
   };
   const changeTagColorOrNot = (tag: string) => selectedTags.indexOf(tag) >= 0 ? 'selected' : '';
