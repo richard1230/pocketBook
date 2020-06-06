@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import React, {useState} from 'react';
+import {useTags} from '../../useTags';
 
 const Wrapper = styled.section`
     background:#FFFFFF;
@@ -36,14 +37,14 @@ const Wrapper = styled.section`
 `;
 
 type Props = {
-  value:string[];
-  onChange: (selected:string[])=>void
+  value: string[];
+  onChange: (selected: string[]) => void
 }
 //FunctionComponent就是FC
 //我是一个函数组件,除了接受默认的children,还可以接受string[]类型
 const TagsSection: React.FC<Props> = (props) => {
-  const [tags, setTags] = useState<string[]>(['衣', '食', '住', '行']);
-  // const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const {tags, setTags} = useTags();
+
   const selectedTags = props.value;
   const onAddTag = () => {
     const tagName = window.prompt('新标签的名称为:');
