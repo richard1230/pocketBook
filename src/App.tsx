@@ -10,24 +10,31 @@ import Statistics from './views/Statistics';
 import Tags from './views/Tags';
 import NoMatch from './views/NoMatch';
 import styled from 'styled-components';
+import {Tag} from './views/Tag';
 
 
 const AppWrapper = styled.div`
 color: #333;
-`
+`;
 
 function App() {
   return (
     <AppWrapper>
       <Router>
         <Switch>
-          <Route path="/tags">
+          //注意这里一定要放在这里,不要放在下面,exact可以摆脱模糊匹配
+          <Route exact path="/tags/:tag">
+            <Tag/>
+          </Route>
+
+          <Route exact path="/tags">
             <Tags/>
           </Route>
-          <Route path="/money">
+
+          <Route exact path="/money">
             <Money/>
           </Route>
-          <Route path="/statistics">
+          <Route exact path="/statistics">
             <Statistics/>
           </Route>
           {/*注意:这里的字符串里面不要留空格,否则会出问题*/}
