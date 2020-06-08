@@ -22,13 +22,13 @@ function App() {
     <AppWrapper>
       <Router>
         <Switch>
-          //注意这里一定要放在这里,不要放在下面,exact可以摆脱模糊匹配
-          <Route exact path="/tags/:tag">
-            <Tag/>
-          </Route>
-
           <Route exact path="/tags">
             <Tags/>
+          </Route>
+
+          //注意这里一定要放在这里,不要放在下面,exact可以摆脱模糊匹配
+          <Route exact path="/tags/:id">
+            <Tag/>
           </Route>
 
           <Route exact path="/money">
