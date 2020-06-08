@@ -37,43 +37,43 @@ const Wrapper = styled.section`
 `;
 
 type Props = {
-  value: string[];
-  onChange: (selected: string[]) => void
+  value: number[];
+  onChange: (selected: number[]) => void
 }
 //FunctionComponent就是FC
 //我是一个函数组件,除了接受默认的children,还可以接受string[]类型
 const TagsSection: React.FC<Props> = (props) => {
   const {tags, setTags} = useTags();
 
-  const selectedTags = props.value;
+  const selectedTagIds = props.value;
   const onAddTag = () => {
     const tagName = window.prompt('新标签的名称为:');
     if (tagName !== null) {
       //...tags：ES6写法,表示之前的tags,
-      setTags([...tags, tagName]);
+      setTags([...tags,{id:Math.random(),name:tagName}]);
     }
   };
-  const onToggleTag = (tag: string) => {
-    const index = selectedTags.indexOf(tag);
+  const onToggleTag = (tagId: number) => {
+    const index = selectedTagIds.indexOf(tagId);
     if (index >= 0) {
       //如果tag已被选中,就复制所没有选中的tag,作为新的selectedTag
-      props.onChange(selectedTags.filter(t => t !== tag));
+      props.onChange(selectedTagIds.filter(t => t !== tagId));
     } else {
-      props.onChange([...selectedTags, tag]);
+      props.onChange([...selectedTagIds, tagId]);
     }
   };
-  const changeTagColorOrNot = (tag: string) => selectedTags.indexOf(tag) >= 0 ? 'selected' : '';
+  const changeTagColorOrNot = (tagId: number) => selectedTagIds.indexOf(tagId) >= 0 ? 'selected' : '';
   return (
     <Wrapper>
       <ol>
         {tags.map(tag =>
-          <li key={tag}
+          <li key={tag.id}
             //后面这个匿名函数作为参数传给onClick(其实这里onClick需要的就是onToggleTag),而不是后面这个匿名函数的返回值传给onClick
-              onClick={() => {onToggleTag(tag);}}
+              onClick={() => {onToggleTag(tag.id);}}
             //这里是把changeTagColor(tag)返回的东西赋给className
-              className={changeTagColorOrNot(tag)}
+              className={changeTagColorOrNot(tag.id)}
           >
-            {tag}
+            {tag.name}
           </li>
         )}
       </ol>
