@@ -3,6 +3,7 @@ import {useTags} from '../useTags';
 import {
   useParams
 } from "react-router-dom";
+import Layout from '../components/Layout';
 
 type Params = {
   id:string
@@ -16,9 +17,11 @@ const Tag :React.FC = (props)=>{
   let {id} = useParams<Params>();
   const tag = findTag(parseInt(id));
   return(
-    <div>
-      {tag.name}
-    </div>
+    <Layout>
+      <div>
+        {tag.name}
+      </div> 
+    </Layout>
   )
 }
 
