@@ -47,7 +47,7 @@ const Nav = () => {
   return (
     <NavWrapper>
       <ul>
-        <li>                /
+        <li>
           {/*/这里exact的作用:去除模糊匹配*/}
           <NavLink to="/tags" exact activeClassName="selected">
             <Icon name="tag"/>
