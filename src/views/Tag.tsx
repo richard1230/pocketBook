@@ -34,19 +34,20 @@ const Tag :React.FC = ()=>{
   // let {id} = useParams();
   // const tag = findTag(parseInt(id));
   //将id重命名为idString,id的类型为string
-  const {findTag,updateTag} = useTags();
+  const {findTag,updateTag,deleteTag} = useTags();
   let {id:idString} = useParams<Params>();
   const tag = findTag(parseInt(idString));
-  return(
-    <Layout>
-      <Topbar>
-        <Icon name="left"/>
-        <span>
+  if(tag) {
+    return (
+      <Layout>
+        <Topbar>
+          <Icon name="left"/>
+          <span>
           编辑标签
         </span>
-        <Icon />
+          <Icon/>
 
-      </Topbar>
+        </Topbar>
 
         {/*<label>*/}
         {/*  <span>标签名</span>*/}
@@ -56,21 +57,28 @@ const Tag :React.FC = ()=>{
                  type="text"
                  placeholder="标签名称"
                  value={tag.name}
-                 onChange={(e)=>{
+                 onChange={(e) => {
                    // 把id为tag.id的tag的name更新为e.target.value
-                   updateTag(tag.id,{name:e.target.value});
+                   updateTag(tag.id, {name: e.target.value});
                  }}
           />
         </InputWrapper>
 
-      <Center>
-        <Space/>
-        <Space/>
-        <Space/>
-      <Button>删除标签</Button>
-      </Center>
-    </Layout>
-  )
-}
+        <Center>
+          <Space/>
+          <Space/>
+          <Space/>
+          <Button onClick={() => deleteTag(tag.id)}>删除标签</Button>
+        </Center>
+      </Layout>
+    );
+  }else {
+    return (
+      <div>
+        tag不存在
+      </div>
+    )
+  }
+};
 
 export {Tag};
