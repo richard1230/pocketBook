@@ -9,7 +9,7 @@ align-items: center;
   white-space: nowrap;
   }
   > input{
-  height: 72px;
+  height: 44px;
   display: block;
    width: 100%;
   background:none;
