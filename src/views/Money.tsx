@@ -31,13 +31,14 @@ function Money() {
 
   return (
     <MyLayout>
-      {selected.tagIds.join(',')}
-      <hr/>
-      {selected.note}
-      <hr/>
-      {selected.category}
-      <hr/>
-      {selected.amount}
+      {/*用于测试,显示数据用的*/}
+      {/*{selected.tagIds.join(',')}*/}
+      {/*<hr/>*/}
+      {/*{selected.note}*/}
+      {/*<hr/>*/}
+      {/*{selected.category}*/}
+      {/*<hr/>*/}
+      {/*{selected.amount}*/}
       <TagsSection value={selected.tagIds}
                    onChange={(tagIds) => onChangeState({tagIds})}/>
       <NoteSection value={selected.note}

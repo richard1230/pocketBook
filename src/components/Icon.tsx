@@ -6,14 +6,15 @@ try {importAll(require.context('icons', true, /\.svg$/));} catch (error) {consol
 
 
 type Props = {
-  name: string
+  name?: string
 }
 
 //这里的类型开头必须是大小,也不能用any
 const Icon = (props: Props) => {
   return (
     <svg className="icon">
-      <use xlinkHref={'#' + props.name}/>
+      {/*name存在才会使用use */}
+      {props.name && <use xlinkHref={'#' + props.name}/>}
     </svg>
   );
 };
