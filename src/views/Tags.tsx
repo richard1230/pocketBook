@@ -24,10 +24,6 @@ font-size: 16px;
 `;
 
 
-
-
-
-
 function Tags() {
   const {tags} = useTags();
   return (
