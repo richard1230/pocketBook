@@ -33,9 +33,10 @@ const Tag :React.FC = ()=>{
   // const {findTag}= useTags();
   // let {id} = useParams();
   // const tag = findTag(parseInt(id));
-  const {findTag} = useTags();
-  let {id} = useParams<Params>();
-  const tag = findTag(parseInt(id));
+  //将id重命名为idString,id的类型为string
+  const {findTag,updateTag} = useTags();
+  let {id:idString} = useParams<Params>();
+  const tag = findTag(parseInt(idString));
   return(
     <Layout>
       <Topbar>
@@ -51,7 +52,15 @@ const Tag :React.FC = ()=>{
         {/*  <span>标签名</span>*/}
         {/*</label>*/}
         <InputWrapper>
-          <Input label="标签名" type="text" placeholder="标签名称" value={tag.name}/>
+          <Input label="标签名"
+                 type="text"
+                 placeholder="标签名称"
+                 value={tag.name}
+                 onChange={(e)=>{
+                   // 把id为tag.id的tag的name更新为e.target.value
+                   updateTag(tag.id,{name:e.target.value});
+                 }}
+          />
         </InputWrapper>
 
       <Center>
