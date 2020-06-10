@@ -22,23 +22,24 @@ const useTags = () => {
     return result;
   };
   const updateTag = (id: number, obj: { name: string }) => {
-    //获取你要更改的tag的下标
-    const index = findTagIndex(id);
-    //深拷贝tags得到 tagsClone,React里面不推荐改原数组!因为没效果,React强调不可变数据
-    const tagsClone = JSON.parse(JSON.stringify(tags));
-    // 把tagsClone 的第index删掉,换成{id:id,name:obj.name}
-    tagsClone.splice(index, 1, {id: id, name: obj.name});
-    setTags(tagsClone);
+    setTags(tags.map(tag => {
+        // if (tag.id === id) {
+        //   //如果id是想要更新的那个id,那么id是之前的id,name是新的name
+        //   // return {id:id, name:obj.name};可以简写为下面
+        //   return {id, name};
+        // } else {
+        //   return tag;
+        // }
+      return tag.id === id ? {id,name:obj.name} :tag;
+      }
+    ));
   };
 
-  const deleteTag = (id:number)=>{
-    const index = findTagIndex(id);
-    const tagsClone = JSON.parse(JSON.stringify(tags));
-    tagsClone.splice(index,1)
-    setTags(tagsClone)
-  }
+  const deleteTag = (id: number) => {
+    setTags(tags.filter(tag => tag.id !== id));
+  };
 
-  return {tags: tags, setTags: setTags, findTag, updateTag, findTagIndex,deleteTag};
+  return {tags: tags, setTags: setTags, findTag, updateTag, findTagIndex, deleteTag};
 };
 
 export {useTags};
