@@ -12,7 +12,7 @@ import Icon from './Icon';
 //2.svg会不显示
 // console.log(x,y)
 const NavWrapper = styled.nav`
-background:#ffffff;
+background:white;
 //border: 1px solid blue;
 line-height: 24px;
 //设置阴影
@@ -36,8 +36,8 @@ height: 24px
 color:#40B475;
     .icon{
       fill:#40B475;
-    }
-}
+         }
+      }
     }
   }
 }
@@ -49,19 +49,25 @@ const Nav = () => {
       <ul>
         <li>
           {/*/这里exact的作用:去除模糊匹配*/}
-          <NavLink to="/tags" exact activeClassName="selected">
+          <NavLink to="/tags"
+                   // exact
+                   activeClassName="selected">
             <Icon name="tag"/>
             标签页
           </NavLink>
         </li>
         <li>
-          <NavLink to="/money" exact activeClassName="selected">
+          <NavLink to="/money"
+                   // exact
+                   activeClassName="selected">
             <Icon name="money"/>
             记账页
           </NavLink>
         </li>
         <li>
-          <NavLink to="/statistics" exact activeClassName="selected">
+          <NavLink to="/statistics"
+                   // exact
+                   activeClassName="selected">
             <Icon name="chart"/>
             统计页
           </NavLink>

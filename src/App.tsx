@@ -26,7 +26,7 @@ function App() {
             <Tags/>
           </Route>
 
-          //注意这里一定要放在这里,不要放在下面,exact可以摆脱模糊匹配
+          {/*//注意这里一定要放在这里,不要放在下面,exact可以摆脱模糊匹配*/}
           <Route exact path="/tags/:id">
             <Tag/>
           </Route>
