@@ -1,7 +1,7 @@
 import React from 'react';
 import {useTags} from '../useTags';
 import {
-  useParams
+  useParams, useHistory
 } from 'react-router-dom';
 import Layout from 'components/Layout';
 import Icon from 'components/Icon';
@@ -58,9 +58,12 @@ const Tag: React.FC = () => {
     </Center>
   </div>);
 
-  const onClickBack = ()=>{
-
-  }
+  const history = useHistory();
+  const onClickBack = () => {
+    // window.history.back()
+    //使用reactRoot自己封装的api
+    history.goBack();
+  };
   return (
     <Layout>
       <Topbar>
