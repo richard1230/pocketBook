@@ -7,13 +7,14 @@ try {importAll(require.context('icons', true, /\.svg$/));} catch (error) {consol
 
 type Props = {
   name?: string
-}
+}& React.SVGAttributes<SVGAElement>
 
 //这里的类型开头必须是大小,也不能用any
 const Icon = (props: Props) => {
+
+  const {name,children, ...rest} = props
   return (
-    <svg className="icon">
-      {/*name存在才会使用use */}
+    <svg className="icon"  {...rest} >
       {props.name && <use xlinkHref={'#' + props.name}/>}
     </svg>
   );

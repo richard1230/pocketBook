@@ -57,10 +57,14 @@ const Tag: React.FC = () => {
       <Button onClick={() => deleteTag(tag.id)}>删除标签</Button>
     </Center>
   </div>);
+
+  const onClickBack = ()=>{
+
+  }
   return (
     <Layout>
       <Topbar>
-        <Icon name="left"/>
+        <Icon name="left" onClick={onClickBack}/>
         <span>
           编辑标签
         </span>
