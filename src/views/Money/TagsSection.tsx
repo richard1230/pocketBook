@@ -44,16 +44,9 @@ type Props = {
 //FunctionComponent就是FC
 //我是一个函数组件,除了接受默认的children,还可以接受string[]类型
 const TagsSection: React.FC<Props> = (props) => {
-  const {tags, setTags} = useTags();
+  const {tags, addTag} = useTags();
 
   const selectedTagIds = props.value;
-  const onAddTag = () => {
-    const tagName = window.prompt('新标签的名称为:');
-    if (tagName !== null) {
-      //...tags：ES6写法,表示之前的tags,
-      setTags([...tags,{id:createId(),name:tagName}]);
-    }
-  };
   const onToggleTag = (tagId: number) => {
     const index = selectedTagIds.indexOf(tagId);
     if (index >= 0) {
@@ -79,7 +72,8 @@ const TagsSection: React.FC<Props> = (props) => {
         )}
       </ol>
 
-      <button onClick={onAddTag}>新增标签</button>
+      <button onClick={()=>{
+      }}>新增标签</button>
     </Wrapper>
   );
 };
