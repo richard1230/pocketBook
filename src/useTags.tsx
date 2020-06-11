@@ -11,9 +11,9 @@ import {useUpdate} from './hooks/useUpdate';
 
 const useTags = () => {
   const [tags, setTags] = useState<{ id: number; name: string }[]>([]);
-  useEffect(()=>{
-    let  localTags = JSON.parse(window.localStorage.getItem('tag') || '[]');
-    if(localTags.length === 0){
+  useEffect(() => {
+    let localTags = JSON.parse(window.localStorage.getItem('tags') || '[]');
+    if (localTags.length === 0) {
       localTags = [
         {id: createId(), name: '衣'},
         {id: createId(), name: '食'},
@@ -22,11 +22,11 @@ const useTags = () => {
       ];
     }
     setTags(localTags);
-  },[]);//组件挂载是执行
-  //如果tags更新了(不包含第一次更新),我就把你存起来
-  useUpdate(()=>{
-    window.localStorage.setItem('tags',JSON.stringify(tags));
-  },[tags])
+
+  }, []); // 组件挂载时执行
+  useUpdate(() => {
+    window.localStorage.setItem('tags', JSON.stringify(tags));
+  }, [tags]);
 
   const findTag = (id: number) => tags.filter(tag => tag.id === id)[0];
   const findTagIndex = (id: number) => {
@@ -51,15 +51,13 @@ const useTags = () => {
   };
 
   const addTag = () => {
-    const tagName = window.prompt('新标签的名称为:');
+    console.log('hi');
+    const tagName = window.prompt('新标签的名称为');
     if (tagName !== null && tagName !== '') {
-      //...tags：ES6写法,表示之前的tags,
-      setTags([...tags,{id:createId(),name:tagName}]);
+      setTags([...tags, {id: createId(), name: tagName}]);
     }
   };
-
-
-  return {tags: tags, setTags: setTags, findTag, updateTag, findTagIndex, deleteTag,addTag};
+  return {tags, addTag, setTags, findTag, updateTag, findTagIndex, deleteTag};
 };
 
 export {useTags};
