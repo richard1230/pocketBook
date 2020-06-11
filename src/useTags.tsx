@@ -1,5 +1,5 @@
-import {useEffect,  useState} from 'react';
-import {createId} from './lib/createId';
+import {useEffect, useRef, useState} from 'react';
+import {createId} from 'lib/createId';
 import {useUpdate} from './hooks/useUpdate';
 
 // const defaultTags = [
@@ -12,7 +12,6 @@ import {useUpdate} from './hooks/useUpdate';
 const useTags = () => {
   const [tags, setTags] = useState<{ id: number; name: string }[]>([]);
   useEffect(()=>{
-    console.log("after amount");
     let  localTags = JSON.parse(window.localStorage.getItem('tag') || '[]');
     if(localTags.length === 0){
       localTags = [
@@ -23,12 +22,9 @@ const useTags = () => {
       ];
     }
     setTags(localTags);
-    console.log(' get Item')
-  },[]);
+  },[]);//组件挂载是执行
   //如果tags更新了(不包含第一次更新),我就把你存起来
   useUpdate(()=>{
-    console.log('set item');
-    console.log(JSON.stringify(tags));
     window.localStorage.setItem('tags',JSON.stringify(tags));
   },[tags])
 
@@ -43,16 +39,9 @@ const useTags = () => {
     }
     return result;
   };
-  const updateTag = (id: number, obj: { name: string }) => {
+  const updateTag = (id: number, {name}: { name: string }) => {
     setTags(tags.map(tag => {
-        // if (tag.id === id) {
-        //   //如果id是想要更新的那个id,那么id是之前的id,name是新的name
-        //   // return {id:id, name:obj.name};可以简写为下面
-        //   return {id, name};
-        // } else {
-        //   return tag;
-        // }
-      return tag.id === id ? {id,name:obj.name} :tag;
+      return tag.id === id ? {id, name: name}  :tag;
       }
     ));
   };

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React from 'react';
 import {useTags} from '../../useTags';
-import {createId} from '../../lib/createId';
+import {createId} from 'lib/createId';
 
 const Wrapper = styled.section`
     background:#FFFFFF;
@@ -45,7 +45,7 @@ type Props = {
 //我是一个函数组件,除了接受默认的children,还可以接受string[]类型
 const TagsSection: React.FC<Props> = (props) => {
   const {tags, addTag} = useTags();
-
+  console.log('use tags')
   const selectedTagIds = props.value;
   const onToggleTag = (tagId: number) => {
     const index = selectedTagIds.indexOf(tagId);
@@ -73,6 +73,7 @@ const TagsSection: React.FC<Props> = (props) => {
       </ol>
 
       <button onClick={()=>{
+        addTag();
       }}>新增标签</button>
     </Wrapper>
   );
