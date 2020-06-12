@@ -26,9 +26,17 @@ export const useRecords = ()=>{
   },[records]);
 
   const addRecord = (newRecord:newRecordItem)=>{
+    if(newRecord.amount <= 0){
+      alert("请输入金额")
+      return false;}
+    if(newRecord.tagIds.length ===0){
+      alert('请选择标签')
+      return false;
+    }
     const record = {...newRecord,createdAt:(new Date()).toISOString()}
   //setRecords一旦触发,Money.tsx将会被更新
     setRecords([...records,record]);
+    return true;
   }
 
 
