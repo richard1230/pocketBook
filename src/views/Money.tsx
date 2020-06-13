@@ -1,5 +1,5 @@
 import Layout from '../components/Layout';
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import styled from 'styled-components';
 import {TagsSection} from './Money/TagsSection';
 import {NoteSection} from './Money/NoteSection';
@@ -35,8 +35,14 @@ function Money() {
       alert('保存成功')
       setSelected(defaultFormData)
     }
+  };
 
-  }
+  useEffect(() => {
+    setTimeout(() => {
+      console.log('时间到');
+      setSelected({...selected, amount: 1000});
+    }, 3000);
+  }, []);
 
 
   return (
@@ -50,7 +56,6 @@ function Money() {
       <NumberPadSection value={selected.amount}
                         onChange={(amount) => onChangeState({amount})}
                         onOk={submit}
-
       />
 
     </MyLayout>
