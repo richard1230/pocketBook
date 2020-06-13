@@ -22,6 +22,11 @@ const defaultFormData = {
   amount: 0
 }
 
+
+const CategoryWrapper = styled.div`
+    background:#c4c4c4;
+`;
+
 function Money() {
   const [selected, setSelected] = useState(defaultFormData);
 
@@ -37,12 +42,6 @@ function Money() {
     }
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      console.log('时间到');
-      setSelected({...selected, amount: 1000});
-    }, 3000);
-  }, []);
 
 
   return (
@@ -51,8 +50,12 @@ function Money() {
                    onChange={(tagIds) => onChangeState({tagIds})}/>
       <NoteSection value={selected.note}
                    onChange={(note) => onChangeState({note})}/>
-      <CategorySection value={selected.category}
-                       onChange={(category) => onChangeState({category})}/>
+      {/*<CategorySection value={selected.category}*/}
+      {/*                 onChange={(category) => onChangeState({category})}/>*/}
+      <CategoryWrapper>
+        <CategorySection value={selected.category}
+                         onChange={category => onChangeState({category})}/>
+      </CategoryWrapper>
       <NumberPadSection value={selected.amount}
                         onChange={(amount) => onChangeState({amount})}
                         onOk={submit}
