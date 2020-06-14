@@ -1,7 +1,7 @@
 import {useEffect, useRef} from 'react';
 
 //注意哪些是从外面传到里面的
-export const useUpdate = (fn: () => void, deps: any[]) => {
+export const useUpdate = (fn: () => void, dependency: any[]) => {
   const count = useRef(0);
   useEffect(() => {
     count.current += 1;
@@ -10,6 +10,6 @@ export const useUpdate = (fn: () => void, deps: any[]) => {
     if (count.current > 1) {
       fn();
     }
-  }, deps); // 不可变数据
+  }, [fn, dependency]); // 不可变数据
 };
 
