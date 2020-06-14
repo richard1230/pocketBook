@@ -65,9 +65,7 @@ const Tag: React.FC = () => {
         </span>
         <Icon/>
       </Topbar>
-
       {tag ? tagContent(tag) : <Center>Tag不存在</Center>}
-
 
     </Layout>
   );

@@ -20,7 +20,7 @@ const defaultFormData = {
   note: '',
   category: '-' as Category,
   amount: 0
-}
+};
 
 
 const CategoryWrapper = styled.div`
@@ -36,12 +36,11 @@ function Money() {
   };
 
   const submit = () => {
-    if(addRecord(selected)){
-      alert('保存成功')
-      setSelected(defaultFormData)
+    if (addRecord(selected)) {
+      alert('保存成功');
+      setSelected(defaultFormData);
     }
   };
-
 
 
   return (

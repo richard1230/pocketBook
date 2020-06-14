@@ -25,13 +25,13 @@ font-size: 16px;
 
 
 function Tags() {
-  const {tags,addTag} = useTags();
+  const {tags, addTag} = useTags();
   return (
     <Layout>
       <TagList>
         {tags.map(tag =>
           <li key={tag.id}>
-            <Link to={'/tags/'+ tag.id }>
+            <Link to={'/tags/' + tag.id}>
               <span className="oneLine">{tag.id}:{tag.name}</span>
               <Icon name="right"/>
             </Link>
