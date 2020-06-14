@@ -38,7 +38,9 @@ function Statistics() {
   const hash: { [K: string]: RecordItem[] } = {}; // {'2020-05-11': [item, item], '2020-05-10': [item, item], '2020-05-12': [item, item, item, item]}
   const selectedRecords = records.filter(r => r.category === category);
 
-  selectedRecords.map(r => {
+  //map有一个返回值
+  //foreach没有返回值
+  selectedRecords.forEach(r => {
     const key = day(r.createdAt).format('YYYY年MM月DD日');
     if (!(key in hash)) {
       hash[key] = [];
@@ -59,23 +61,6 @@ function Statistics() {
         <CategorySection value={category}
                          onChange={value => setCategory(value)}/>
       </CategoryWrapper>
-
-      {/*<div>*/}
-      {/*  {records.map(r => {*/}
-      {/*    return <Item>*/}
-      {/*      <div className="tags">*/}
-      {/*        {r.tagIds.map(tagId => <span>{getName(tagId)}</span>)}*/}
-      {/*      </div>*/}
-      {/*      {r.note && <div className="note">*/}
-      {/*        {r.note}*/}
-      {/*      </div>}*/}
-      {/*      <div className="amount">*/}
-      {/*        ￥{r.amount}*/}
-      {/*      </div>*/}
-      {/*      {day(r.createdAt).format('YYYY年MM月DD日')}*/}
-      {/*    </Item>;*/}
-      {/*  })}*/}
-      {/*</div>*/}
       {array.map(([date, records]) => <div>
         <Header>
           {date}
