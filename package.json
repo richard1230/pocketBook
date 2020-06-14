@@ -1,6 +1,7 @@
 {
   "name": "morney-01",
   "version": "0.1.0",
+  "homepage": "https://richard1230.github.io/pocketBook-website/",
   "private": true,
   "dependencies": {
     "@babel/core": "7.9.0",
