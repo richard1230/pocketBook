@@ -31,9 +31,9 @@ const Layout: React.FC<Props> = (props )=>{
         return;
       }
       console.log(props.scrollTop)
-      mainRef.current.scrollTop = props.scrollTop!;
+      mainRef.current.scrollTop = props.scrollTop!;//
       console.log(mainRef.current.scrollTop);
-    },0);
+    },0);//这里的 0是指滚动条尽快滚动到下面
   },[props.scrollTop])
   return (
     <Wrapper>
