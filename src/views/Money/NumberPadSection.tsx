@@ -8,15 +8,11 @@ type Props = {
   onOk?:()=>void;
 }
 const NumberPadSection: React.FC<Props> = (props) => {
-  // const [output, _setOutput] = useState(props.value.toString);
-  // const output = props.value.toString();
   const [output, _setOutput] = useState(props.value.toString());
 
   const setOutput = (output: string) => {
-    // let value;
     let newOutput: string;
     if (output.length > 16) {
-      // value = parseFloat(output.slice(0, 16));
       newOutput = output.slice(0, 16);
 
     } else if (output.length === 0) {
@@ -24,7 +20,6 @@ const NumberPadSection: React.FC<Props> = (props) => {
     } else {
       newOutput = output;
     }
-    // props.onChange(value);
     _setOutput(newOutput);
     props.onChange(parseFloat(newOutput));
   };
@@ -35,7 +30,6 @@ const NumberPadSection: React.FC<Props> = (props) => {
       if(props.onOk){props.onOk();}
       return;
     }
-    //如果text里面的内容是0，1，2，3，4，5，6，7，8，9，删除，清空里面的某一项
     if ('0123456789.'.split('').concat(['删除', '清空']).indexOf(text) >= 0) {
       setOutput(generateOutput(text, output));
     }

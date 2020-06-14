@@ -5,7 +5,6 @@ const Wrapper = styled.section`
 font-size: 24px;
   > ul {
   display: flex;
-  //background:#c4c4c4;
     > li{
     width: 50%;
     text-align: center;
@@ -32,9 +31,7 @@ type Props = {
 const CategorySection: React.FC<Props> = (props) => {
   const categoryMap = {'-': '支出', '+': '收入'};
   type Keys = keyof typeof categoryMap
-  //string[]:字符串数组;()[]:任意类型的数组;('-'|'+')[]:减和加的数组
   const [categoryList] = useState<Keys[]>(['-', '+']);
-  // const [category,setCategory] = useState('-') // + 表示收入  -表示支出
   const category = props.value;
   return (
     <Wrapper>

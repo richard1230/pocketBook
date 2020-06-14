@@ -7,10 +7,9 @@ export type RecordItem = {
   note:string
   category:'+'|'-'
   amount:number
-  createdAt:string //ISO 8601的格式
+  createdAt:string
 }
 
-//newRecordItem忽律RecordItem里面的createdAt属性
 type newRecordItem = Omit<RecordItem, 'createdAt' >
 
 
@@ -34,12 +33,8 @@ export const useRecords = ()=>{
       return false;
     }
     const record = {...newRecord,createdAt:(new Date()).toISOString()}
-  //setRecords一旦触发,Money.tsx将会被更新
     setRecords([...records,record]);
     return true;
   }
-
-
-
   return {records,addRecord}
 }

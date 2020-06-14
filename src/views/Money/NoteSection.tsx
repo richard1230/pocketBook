@@ -15,10 +15,7 @@ type Props = {
   onChange: (value: string) => void;
 }
 const NoteSection: React.FC<Props> = (props) => {
-  // const [note, setNote] = useState('');
   const note = props.value;
-  // const refInput = useRef<HTMLInputElement>(null);
-  //这里将非受控组件变为了受控组件
   const MyOnChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     props.onChange(e.target.value);
   };

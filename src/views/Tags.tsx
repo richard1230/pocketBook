@@ -26,7 +26,6 @@ font-size: 16px;
 
 function Tags() {
   const {tags,addTag} = useTags();
-  // console.log(tag.id);
   return (
     <Layout>
       <TagList>

@@ -30,14 +30,9 @@ background:white;
 `;
 
 const Tag: React.FC = () => {
-  // const {findTag}= useTags();
-  // let {id} = useParams();
-  // const tag = findTag(parseInt(id));
-  //将id重命名为idString,id的类型为string
   const {findTag, updateTag, deleteTag} = useTags();
   let {id: idString} = useParams<Params>();
   const tag = findTag(parseInt(idString));
-  //不是组件,不要大写首字母
   const tagContent = (tag: { id: number; name: string }) => (<div>
     <InputWrapper>
       <Input label="标签名"
@@ -45,7 +40,6 @@ const Tag: React.FC = () => {
              placeholder="标签名称"
              value={tag.name}
              onChange={(e) => {
-               // 把id为tag.id的tag的name更新为e.target.value
                updateTag(tag.id, {name: e.target.value});
              }}
       />
@@ -60,8 +54,6 @@ const Tag: React.FC = () => {
 
   const history = useHistory();
   const onClickBack = () => {
-    // window.history.back()
-    //使用reactRoot自己封装的api
     history.goBack();
   };
   return (

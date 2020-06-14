@@ -35,11 +35,9 @@ function Statistics() {
   const {records} = useRecords();
   const {getName} = useTags();
 
-  const hash: { [K: string]: RecordItem[] } = {}; // {'2020-05-11': [item, item], '2020-05-10': [item, item], '2020-05-12': [item, item, item, item]}
+  const hash: { [K: string]: RecordItem[] } = {};
   const selectedRecords = records.filter(r => r.category === category);
 
-  //map有一个返回值
-  //foreach没有返回值
   selectedRecords.forEach(r => {
     const key = day(r.createdAt).format('YYYY年MM月DD日');
     if (!(key in hash)) {

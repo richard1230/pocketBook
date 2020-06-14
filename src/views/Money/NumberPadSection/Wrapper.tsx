@@ -9,13 +9,10 @@ font-size: 36px;
 line-height: 72px;
 text-align: right;
 padding: 0 16px;
-//添加内阴影
 box-shadow: inset 0 -5px 5px -5px rgba(0,0,0,0.25),
             inset 0 5px 5px -5px rgba(0,0,0,0.25);
 }
 > .pad{
-//display: flex;
-//flex-wrap: wrap;
   > button{
   font-size: 18px;
   float: left;
@@ -26,7 +23,6 @@ box-shadow: inset 0 -5px 5px -5px rgba(0,0,0,0.25),
   height: 128px;
   float: right;
   }
-  //&和点之间没有空格
   &.zero{
   width: 50%;
   }

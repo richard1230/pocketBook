@@ -19,7 +19,6 @@ const generateOutput = (text: string, output = '0') => {
       if (output.length === 1) {
         return '';
       } else {
-        //output.length-1这里可以直接写成 -1
         return output.slice(0, output.length - 1) || '';
       }
     case '清空':

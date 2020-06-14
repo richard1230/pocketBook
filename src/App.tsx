@@ -21,7 +21,6 @@ function App() {
             <Tags/>
           </Route>
 
-          {/*//注意这里一定要放在这里,不要放在下面,exact可以摆脱模糊匹配*/}
           <Route exact path="/tags/:id">
             <Tag/>
           </Route>
@@ -32,7 +31,6 @@ function App() {
           <Route exact path="/statistics">
             <Statistics/>
           </Route>
-          {/*注意:这里的字符串里面不要留空格,否则会出问题*/}
           <Redirect exact from="/" to="/money"/>
           <Route path="*">
             <NoMatch/>

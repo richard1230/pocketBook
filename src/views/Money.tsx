@@ -50,8 +50,6 @@ function Money() {
                    onChange={(tagIds) => onChangeState({tagIds})}/>
       <NoteSection value={selected.note}
                    onChange={(note) => onChangeState({note})}/>
-      {/*<CategorySection value={selected.category}*/}
-      {/*                 onChange={(category) => onChangeState({category})}/>*/}
       <CategoryWrapper>
         <CategorySection value={selected.category}
                          onChange={category => onChangeState({category})}/>
