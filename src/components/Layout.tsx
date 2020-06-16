@@ -11,6 +11,9 @@ flex-direction: column;
 const Main = styled.div`
 flex-grow: 1;
 overflow: auto;
+&::-webkit-scrollbar{ 
+display: none;
+}
 `;
 
 type Props = {
