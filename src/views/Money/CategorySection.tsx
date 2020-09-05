@@ -14,7 +14,7 @@ font-size: 24px;
     content: '';
     display: block;
     height: 3px;
-    background:#333;
+    background:#E1FFFF;
     position: absolute;
     bottom: 0;
     width: 100%;

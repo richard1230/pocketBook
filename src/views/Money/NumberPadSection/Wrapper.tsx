@@ -26,9 +26,12 @@ box-shadow: inset 0 -5px 5px -5px rgba(0,0,0,0.25),
   &.zero{
   width: 50%;
   }
+ 
   &:nth-child(1){
   background:#f2f2f2;
   }
+ 
+ 
    &:nth-child(2),
    &:nth-child(5){
   background: #e0e0e0;
