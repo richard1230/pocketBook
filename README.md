@@ -13,15 +13,9 @@ The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
 ### Deploy  Guide
-
 ```
-yarn build &&
-cd build   &&
-git init  &&
-git add . &&
-git commit -m "deploy"  &&
-git remote add origin deployrepository &&
-git push -u origin master -f
-cd -
+
+sh scripts/deploy_github.sh
+
 ```
 
